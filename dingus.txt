@@ -1,0 +1,6 @@
+var dood = 7
+
+print 5
+print "hello world"
+
+print dood

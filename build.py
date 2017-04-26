@@ -11,7 +11,7 @@ bin_dir = "./bin"
 if not os.path.exists(bin_dir):
     os.makedirs(bin_dir)
 
-command = "{} {} -o {}/compiled.out -std=c++14 -Iinclude/".format(compiler, options, bin_dir)
+command = "{} {} -o {}/basis -std=c++14 -Iinclude/".format(compiler, options, bin_dir)
 
 for dirpath, dirnames, filenames in os.walk(src_dir):
     for file in [f for f in filenames]:
@@ -19,12 +19,7 @@ for dirpath, dirnames, filenames in os.walk(src_dir):
             print("{}/{}...".format(dirpath, file))
             command = "{} {}/{} ".format(command, dirpath, file)
 
-if os.system("{}".format(command)):
-    #failed build
-    print("BUILD: Cannot Run - Build errors")
-else:
-    #success!
-    print("BUILD: Running...")
-    os.system("./bin/compiled.out")
+os.system("{}".format(command))
+
 
 print("BUILD: Build complete")
